@@ -459,7 +459,7 @@ body {
 }
 
 .title {
-	margin-bottom: 40px;
+	/* margin-bottom: 40px; */
 }
 
 #time {
@@ -496,7 +496,7 @@ body {
 
 .block {
 	width: 180px;
-	height: 160px;
+	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -577,3 +577,184 @@ a {
 	font-size: 12px;
 	letter-spacing: 0pt;
 }
+
+.hidden {
+	display: none !important;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+	background-color: #000;
+	color: rgba(255, 255, 255, 0.3);
+	transition: background-color 0.5s, color 0.5s;
+  }
+  
+  /* When light is on */
+  body.light-on {
+	background-color: #fff;
+	color: #333;
+	transition: background-color 0.5s, color 0.5s;
+  }
+  
+  /* Toggle switch styling */
+  .switch {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	height: 24px;
+	margin-right: 10px;
+  }
+  .switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }
+  .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background-color: #ccc;
+	transition: 0.4s;
+	border-radius: 24px;
+  }
+  .slider:before {
+	position: absolute;
+	content: "";
+	height: 18px;
+	width: 18px;
+	left: 3px;
+	bottom: 3px;
+	background-color: white;
+	transition: 0.4s;
+	border-radius: 50%;
+  }
+  input:checked + .slider {
+	background-color: #4caf50;
+  }
+  input:checked + .slider:before {
+	transform: translateX(26px);
+  }
+  
+  .label-text {
+	font-size: 16px;
+	color: #eee;
+	vertical-align: middle;
+  }
+  
+  /* String lights container */
+  .string-lights {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background: #222;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	z-index: 1000;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.5s ease;
+  }
+  
+  /* Show lights only when light is on */
+  body.light-on .string-lights {
+	opacity: 1;
+	pointer-events: auto;
+  }
+  
+  /* Bulbs styling */
+  .bulb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: #f7d11e;
+	box-shadow: 0 0 10px 3px #f7d11e;
+	opacity: 0.3;
+	animation: blink 2s infinite;
+  }
+  .bulb:nth-child(odd) {
+	animation-delay: 0s;
+  }
+  .bulb:nth-child(even) {
+	animation-delay: 1s;
+  }
+  @keyframes blink {
+	0%, 100% { opacity: 1; box-shadow: 0 0 15px 4px #f7d11e; }
+	50% { opacity: 0.2; box-shadow: none; }
+  }
+
+
+  body.dark-mode #main-content {
+	display: none;
+  }
+  body.light-on #main-content {
+	display: block;
+  }  
+  
+
+
+
+  /* Curtain container, full viewport, over everything */
+  .curtain {
+	position: fixed;
+	top: 0; left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	z-index: 100;
+	pointer-events: none;
+  }
+  
+  /* Curtain panels */
+  .curtain-panel {
+	width: 50%;
+	height: 100%;
+	background: #674ea7;
+	box-shadow: inset 0 0 60px #452e7a;
+	will-change: transform, opacity;
+	/* Add smoother transition with ease */
+	transition: transform 2.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease 2.5s;
+	opacity: 1;
+  }
+  
+  .curtain-panel.left {
+	border-right: 3px solid #553377;
+	transform: translateX(0);
+  }
+  
+  .curtain-panel.right {
+	border-left: 3px solid #553377;
+	transform: translateX(0);
+  }
+  
+  /* Sliding curtain open */
+  body.light-on .curtain-panel.left {
+	transform: translateX(-100%);
+	opacity: 0;
+  }
+  
+  body.light-on .curtain-panel.right {
+	transform: translateX(100%);
+	opacity: 0;
+  }
+  
+  /* Fade out curtain container once panels are fully opened */
+  body.light-on .curtain {
+	animation: curtainFadeOut 1s ease forwards 3.5s;
+  }
+  
+  @keyframes curtainFadeOut {
+	to {
+	  opacity: 0;
+	  pointer-events: none;
+	}
+  }
+  
+  
+
+
+  .toggle-container {
+	z-index: 1000;
+  }

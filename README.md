@@ -26,13 +26,13 @@ inviting you and your family to elder sister's wedding to be held on **29th Nove
 
 ```js
 
-const newCouple = 'Sonali & Gagan';
+const newCouple = 'Aditi & Ayush';
 
-// Nov 29, 2020
-const weddingDate = new Date(2020, 11, 29);
+// Oct 4, 2025
+const weddingDate = new Date(2025, 10, 4);
 
-// Wedding venue: https://goo.gl/maps/5z5xX2hTYzU8VGEJ9
-const weddingVenue = new Location('Ashirwad Garden, Ranchi');
+// Wedding venue: https://maps.app.goo.gl/DFoHj989HxPvm55u5
+const weddingVenue = new Location('Saashi Farm');
 
 (function() {
     newCouple.willTieKnot(weddingDate);
@@ -55,7 +55,7 @@ To reuse this, follow the steps:
 
 ```js
 // Set the date we're counting down to
-var countDownDate = new Date("Nov 29, 2020 00:00:00").getTime();
+var countDownDate = new Date("Oct 4, 2025 20:00:00").getTime();
 ```
 
 - *If you wish to change the track which plays on click, edit the `src` in [index.html](https://github.com/vinitshahdeo/Wedding-Invitation/blob/760c4aa437115fc365f5cb86a4b428b0e292b5ba/index.html#L69)*

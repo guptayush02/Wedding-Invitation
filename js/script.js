@@ -1,10 +1,75 @@
 /**
- * @author Vinit Shahdeo <vinitshahdeo@gmail.com>
+ * @author Ayush Gupta <guptayush02@gmail.com>
  */
 (function ($) {
     "use strict";
       $('.sakura-falling').sakura();
 })(jQuery);
+
+const body = document.body;
+const lightSwitch = document.getElementById('lightSwitch');
+const sakuraFalling = document.getElementsByClassName('sakura-falling');
+const topRightDecoration = document.getElementsByClassName('top-right-decoration');
+const topLeftDecoration = document.getElementsByClassName('top-left-decoration');
+const wrap = document.getElementsByClassName('wrap');
+const time = document.getElementById('time');
+const danceMed = document.getElementsByClassName('dance-med');
+const actions = document.getElementsByClassName('actions');
+const footer = document.getElementsByClassName('footer');
+const happiness = document.getElementsByClassName('happiness');
+
+
+function setInitialMode() {
+  // Start with dark mode by default
+  body.classList.add('dark-mode');
+  body.classList.remove('light-on');
+
+  console.log("sakuraFalling:", sakuraFalling)
+  Array.from(sakuraFalling).forEach(el => el.classList.add('hidden'));
+  Array.from(topRightDecoration).forEach(el => el.classList.add('hidden'));
+  Array.from(topLeftDecoration).forEach(el => el.classList.add('hidden'));
+  Array.from(wrap).forEach(el => el.classList.add('hidden'));
+  time.classList.add('hidden')
+  Array.from(danceMed).forEach(el => el.classList.add('hidden'));
+  Array.from(actions).forEach(el => el.classList.add('hidden'));
+  Array.from(footer).forEach(el => el.classList.add('hidden'));
+  Array.from(happiness).forEach(el => el.classList.add('hidden'));
+}
+
+setInitialMode();
+
+lightSwitch.addEventListener('change', () => {
+  if (lightSwitch.checked) {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-on');
+    document.getElementById("my_audio").play();
+
+    Array.from(sakuraFalling).forEach(el => el.classList.remove('hidden'));
+    Array.from(topRightDecoration).forEach(el => el.classList.remove('hidden'));
+    Array.from(topLeftDecoration).forEach(el => el.classList.remove('hidden'));
+    Array.from(wrap).forEach(el => el.classList.remove('hidden'));
+    time.classList.remove('hidden');
+    Array.from(danceMed).forEach(el => el.classList.remove('hidden'));
+    Array.from(actions).forEach(el => el.classList.remove('hidden'));
+    Array.from(footer).forEach(el => el.classList.remove('hidden'));
+    Array.from(happiness).forEach(el => el.classList.remove('hidden'));
+    console.log('Shaadi me zaroor aana');
+  } else {
+    body.classList.remove('light-on');
+    body.classList.add('dark-mode');
+    document.getElementById("my_audio").pause();
+    Array.from(sakuraFalling).forEach(el => el.classList.add('hidden'));
+    Array.from(topRightDecoration).forEach(el => el.classList.add('hidden'));
+    Array.from(topLeftDecoration).forEach(el => el.classList.add('hidden'));
+    Array.from(wrap).forEach(el => el.classList.add('hidden'));
+    time.classList.add('hidden');
+    Array.from(danceMed).forEach(el => el.classList.add('hidden'));
+    Array.from(actions).forEach(el => el.classList.add('hidden'));
+    Array.from(footer).forEach(el => el.classList.add('hidden'));
+    Array.from(happiness).forEach(el => el.classList.add('hidden'));
+    console.log('Shaadi me zaroor aana');
+  }
+});
 
 /**
  *
@@ -20,38 +85,92 @@
  * Listen here: https://youtu.be/X0MDALpV29s
  *
  */
-$(document).on('click', function(){
-    document.getElementById("my_audio").play();
-    console.log('Shaadi me zaroor aana');
-});
+// $(document).on('click', function(){
+//     document.getElementById("my_audio").play();
+//     console.log('Shaadi me zaroor aana');
+// });
 
 // Set the date we're counting down to
-var countDownDate = new Date("Nov 29, 2024 00:00:00").getTime();
+// var countDownDate = new Date("Aug 27, 2025 00:00:00").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+// // Update the count down every 1 second
+// var x = setInterval(function() {
 
-    // Get todays date and time
-    var now = new Date().getTime();
+//     // Get todays date and time
+//     var now = new Date().getTime();
     
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
+//     // Find the distance between now and the count down date
+//     var distance = countDownDate - now;
+
+//     if (distance < 0) {
+//         clearInterval(countdownInterval);
+//         document.getElementById("time").innerHTML = "The day has arrived! 🎉";
+//         return;
+//     }
     
-    // Time calculations for days, hours, minutes and seconds
+//     // Time calculations for days, hours, minutes and seconds
+//     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+//     // Output the result in an element with id="demo"
+//     document.getElementById("time").innerHTML = "<div class='container'><div class='days block'>"+ days + "<br>Days</div>" + "<div class='hours block'>" + hours + "<br>Hours</div>" + "<div class='minutes block'>" + minutes + "<br>Minutes</div>" + "<div class='seconds block'>" + seconds + "<br>Seconds</div></div>";
+    
+//     // If the count down is over, write some text 
+//     if (distance < 0) {
+//         clearInterval(x);
+//         document.getElementById("time").innerHTML = "Bless the married couple for happy life!";
+//     }
+// }, 1000);
+
+// Target date: Oct 4, 2025 midnight
+var startDate = new Date("Oct 4, 2025 20:00:00").getTime();
+
+var interval = setInterval(function () {
+  var now = new Date().getTime();
+  
+  if (now < startDate) {
+    // Countdown mode - time LEFT until the date
+    var distance = startDate - now;
+
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    // Output the result in an element with id="demo"
-    document.getElementById("time").innerHTML = "<div class='container'><div class='days block'>"+ days + "<br>Days</div>" + "<div class='hours block'>" + hours + "<br>Hours</div>" + "<div class='minutes block'>" + minutes + "<br>Minutes</div>" + "<div class='seconds block'>" + seconds + "<br>Seconds</div></div>";
-    
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("time").innerHTML = "Bless the married couple for happy life!";
-    }
+
+    document.getElementById("time").innerHTML = `
+      <div class='container'>
+        <div class='days block'>${days} <br>Days</div>
+        <div class='hours block'>${hours} <br>Hours</div>
+        <div class='minutes block'>${minutes} <br>Minutes</div>
+        <div class='seconds block'>${seconds} <br>Seconds</div>
+      </div>
+      
+    `;
+    // <p style="text-align:center; margin-top:10px;">until our special day!</p>
+  } else {
+    // Elapsed mode - time SPENT since the date
+    var elapsed = now - startDate;
+
+    var daysSpent = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+    var hoursSpent = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutesSpent = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+    var secondsSpent = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+    document.getElementById("time").innerHTML = `
+      <div class='container'>
+        <div class='days block'>${daysSpent} <br>Days</div>
+        <div class='hours block'>${hoursSpent} <br>Hours</div>
+        <div class='minutes block'>${minutesSpent} <br>Minutes</div>
+        <div class='seconds block'>${secondsSpent} <br>Seconds</div>
+      </div>
+      
+    `;
+    // <p style="text-align:center; margin-top:10px;">together since our special day!</p>
+  }
 }, 1000);
+
 
 // being a bit cool :p  
 var styles = [
@@ -87,7 +206,7 @@ var styles2 = [
 
 console.log('\n\n%c SAVE THE DATE: 29th Nov, 2020!', styles);
 
-console.log('%cYour presence is requested!%c\n\nRegards: Vinit Shahdeo', styles1, styles2);
+console.log('%cYour presence is requested!%c\n\nRegards: Ayush Gupta', styles1, styles2);
 
 console.log(
     `%cShaadi me zaroor aana!\n\n`,
